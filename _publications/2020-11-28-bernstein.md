@@ -2,9 +2,9 @@
 title: "Deterministic Certification to Adversarial Attacks via Bernstein Polynomial Approximation"
 collection: publications
 permalink: /publication/2020-11-28-bernstein
-# excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: '**Ching-Chia Kao**, Jhe-Bang Ko, Chun-Shien Lu'
 date: 2020-11-28
-# venue: 'Journal 1'
+venue: 'Arxiv'
 # paperurl: 'http://academicpages.github.io/files/paper1.pdf'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
