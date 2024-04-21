@@ -6,6 +6,9 @@
 # `jekyll serve -l -H localhost`. If you change this file, please restart the 
 # server process.
 
+# Theme
+minimal_mistakes_skin: "neon"
+
 # Basic Site Settings
 locale                   : "en-US"
 title                    : "Ching-Chia Kao"
@@ -273,11 +276,6 @@ permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
 timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
-
-# Theme
-theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: "neon"
 
 # Plugins
 plugins:
