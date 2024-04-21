@@ -21,7 +21,7 @@ repository               : "ck918.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "my_ai.png"
   name             : "Ching-Chia Kao"
   pronouns         : # example: "she/her"  
   bio              : # "Short biography for the left-hand sidebar"
