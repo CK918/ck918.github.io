@@ -1,0 +1,403 @@
+/* ==========================================================================
+   MATHEMATICIAN
+   A quiet, LaTeX-inspired look: warm paper, serif type, small caps,
+   thin rules and amsthm-style environments.
+   ========================================================================== */
+
+$ink         : #2b2b2b;
+$ink-soft    : #5c5647;
+$paper       : #fbf8f1;
+$rule        : #e3dccb;
+$accent      : #1f3a5f;  // deep "blueprint" navy
+$accent-warm : #8b2e2e;  // oxblood, used sparingly
+
+html {
+  font-size: 17px;
+
+  @include breakpoint($large) {
+    font-size: 19px;
+  }
+}
+
+body {
+  background: $paper;
+  color: $ink;
+  font-family: $serif;
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba($accent, 0.15);
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($accent, 0.25);
+  transition: border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: $accent-warm;
+    border-bottom-color: $accent-warm;
+  }
+}
+
+/* icon-only and navigation links should not carry the underline rule */
+.masthead a,
+.author__urls a,
+.page__footer a,
+.btn,
+.archive__item-title a + a {
+  border-bottom: none;
+}
+
+/*
+   Masthead: a single line of small caps, like a running head
+   ========================================================================== */
+
+.masthead {
+  background: rgba($paper, 0.96);
+  border-bottom: 1px solid $rule;
+}
+
+.masthead__inner-wrap {
+  font-family: $serif;
+}
+
+.masthead__menu-item {
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 1.05em;
+
+  a {
+    color: $ink-soft;
+
+    &:hover {
+      color: $accent-warm;
+    }
+  }
+
+  &--lg a {
+    color: $ink;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+}
+
+.greedy-nav {
+  background: transparent;
+
+  a {
+    color: $ink-soft;
+  }
+
+  .visible-links a:before {
+    background: $accent-warm;
+    height: 2px;
+  }
+
+  button {
+    background-color: $accent;
+  }
+
+  .hidden-links {
+    background: $paper;
+    border-color: $rule;
+  }
+}
+
+/*
+   Sidebar / author card
+   ========================================================================== */
+
+.sidebar {
+  h2, h3, h4, h5, h6,
+  p, li {
+    font-family: $serif;
+  }
+
+  p, li {
+    font-size: 0.85em;
+  }
+}
+
+.author__avatar img {
+  border-radius: 50%;
+  filter: grayscale(20%) sepia(8%);
+
+  @include breakpoint($large) {
+    border: 1px solid $rule;
+    padding: 4px;
+    background: #fff;
+  }
+}
+
+.sidebar .author__name {
+  font-family: $serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.author__urls-wrapper {
+  font-family: $serif;
+}
+
+.author__urls {
+  background: $paper;
+  border-color: $rule;
+
+  a {
+    color: $ink-soft;
+
+    &:hover {
+      color: $accent-warm;
+    }
+  }
+}
+
+/*
+   Page typography: headings in the style of a LaTeX article
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $serif;
+  color: $ink;
+  font-weight: 500;
+}
+
+.page__title {
+  font-size: 2.1em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.2em;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 3.5em;
+    margin-top: 0.35em;
+    border-bottom: 1px solid $accent-warm;
+  }
+}
+
+.page__content {
+  line-height: 1.6;
+
+  p {
+    @include breakpoint($medium-wide) {
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+
+  h1, h2 {
+    font-size: 1.35em;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $rule;
+    padding-bottom: 0.25em;
+    margin-top: 1.8em;
+  }
+
+  h3 {
+    font-style: italic;
+    font-size: 1.1em;
+  }
+
+  ul li {
+    margin-bottom: 0.3em;
+  }
+
+  blockquote {
+    font-family: $serif;
+    font-style: italic;
+    color: $ink-soft;
+    border-left: none;
+    margin: 1.5em 2em;
+    padding: 0;
+  }
+
+  hr {
+    border: 0;
+    height: 1em;
+    text-align: center;
+    background: none;
+
+    &:after {
+      content: "\2234";
+      color: $ink-soft;
+      font-size: 1.1em;
+    }
+  }
+}
+
+.page__meta,
+.page__date {
+  font-family: $serif;
+  font-style: italic;
+  color: $ink-soft;
+}
+
+/*
+   amsthm-style environments
+   Usage in Markdown/HTML:
+     <div class="theorem" data-label="Theorem 1 (Name)"> ... </div>
+     <div class="definition" data-label="Definition"> ... </div>
+     <div class="remark" data-label="Remark"> ... </div>
+     <div class="proof"> ... </div>
+   ========================================================================== */
+
+.theorem,
+.definition,
+.remark,
+.proof {
+  margin: 1.4em 0;
+
+  > p:first-child {
+    display: inline;
+  }
+
+  > p {
+    margin: 0.4em 0;
+  }
+}
+
+.theorem,
+.definition,
+.remark {
+  &:before {
+    content: attr(data-label) ". ";
+    font-weight: 600;
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
+  }
+}
+
+.theorem {
+  font-style: italic;
+  padding: 0.9em 1.2em;
+  border-left: 2px solid $accent;
+  background: rgba($accent, 0.035);
+}
+
+.definition {
+  padding: 0.9em 1.2em;
+  border-left: 2px solid $accent-warm;
+  background: rgba($accent-warm, 0.03);
+}
+
+.remark {
+  &:before {
+    font-weight: 400;
+    font-style: italic;
+    font-variant: normal;
+  }
+}
+
+.proof {
+  &:before {
+    content: "Proof. ";
+    font-style: italic;
+  }
+
+  &:after {
+    content: "\220E";
+    float: right;
+  }
+}
+
+.epigraph {
+  margin: 0.5em 0 2em auto;
+  max-width: 28em;
+  text-align: right;
+  font-style: italic;
+  color: $ink-soft;
+
+  p {
+    text-align: right !important;
+    margin: 0;
+  }
+
+  cite {
+    display: block;
+    margin-top: 0.3em;
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+  }
+}
+
+/*
+   Publication and teaching lists: read like a bibliography
+   ========================================================================== */
+
+.archive__item-title {
+  font-family: $serif;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.35;
+
+  a {
+    color: $ink;
+    border-bottom: none;
+    text-decoration: none !important;
+
+    &:hover {
+      color: $accent-warm;
+    }
+  }
+}
+
+.list__item {
+  padding: 0.3em 0 0.6em;
+  border-bottom: 1px dotted $rule;
+
+  p {
+    margin: 0.25em 0;
+  }
+
+  .archive__item-excerpt {
+    color: $ink-soft;
+    font-size: 0.95em;
+  }
+}
+
+.archive a {
+  text-decoration: none;
+}
+
+/*
+   Footer
+   ========================================================================== */
+
+.page__footer {
+  background: transparent;
+  border-top: 1px solid $rule;
+  color: $ink-soft;
+  font-family: $serif;
+
+  a {
+    color: $ink-soft;
+
+    &:hover {
+      color: $accent-warm;
+    }
+  }
+}
+
+.page__footer-copyright {
+  font-family: $serif;
+  font-style: italic;
+}
+
+/*
+   MathJax: keep displayed equations from overflowing on phones
+   ========================================================================== */
+
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
